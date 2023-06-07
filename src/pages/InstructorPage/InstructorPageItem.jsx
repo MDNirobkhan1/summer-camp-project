@@ -11,7 +11,6 @@ const InstructorPageItem = ({item}) => {
             <div className="card-body flex flex-1 items-center">
                 <h2 className="card-title">Name: {InstructorName}</h2>
                 <p>Email: {email}</p>
-               
             </div>
         </div>
     );
