@@ -5,8 +5,8 @@ import PopulerItem from "../PopularCart/PopulerItem";
 
 
 const PopularClasses = () => {
-    const[menu] =usePopularClasses();
-    const student= menu.filter(item=> item.category === 'student')
+    const[classItem] =usePopularClasses();
+    const student= classItem.filter(item=> item.category === 'student')
 
     return (
         <div>
@@ -15,7 +15,7 @@ const PopularClasses = () => {
                 heading={"Popular Classes"}>
 
             </SectionTitle>
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid  md:grid-cols-2 p-4 gap-10">
                {
                 student.map(item=> <PopulerItem
                 key={item._id}
