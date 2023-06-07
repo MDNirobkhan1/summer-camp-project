@@ -5,7 +5,7 @@ import logo from '../../../../assets/55102_1477681363.jpg'
 const Footer = () => {
     return (
         <div className="mt-2">
-            <footer className="footer p-10 20 bg-slate-900 text-white ">
+            <footer className="footer p-10 20  bg-slate-900 text-white ">
                 <div>
                     <img src={logo} alt="" />
                     <p>Photography School<br />Providing reliable tech since 1992</p>

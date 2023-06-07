@@ -10,7 +10,7 @@ import logo3 from '../../assets/55.jpg'
 
 const Banner = () => {
     return (
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <Swiper navigation={true} modules={[Navigation]} className="mySwiper ">
             <SwiperSlide className="relative ">
 
                 <div>
