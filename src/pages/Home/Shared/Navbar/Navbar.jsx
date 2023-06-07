@@ -7,13 +7,13 @@ const Navbar = () => {
     const navOptions = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/Instructors'>Instructors</Link></li>
-        <li><Link to='/Classes'>Classes</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/dashboard'>Deashboard</Link></li>
 
     </>
     return (
         <>
-            <div className="navbar fixed z-10  bg-opacity-50 bg-black text-white max-w-screen-xl">
+            <div className="navbar z-10   bg-opacity-50 bg-black text-white max-w-screen-xl">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
