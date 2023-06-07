@@ -9,6 +9,7 @@ const InstructorItem = ({item}) => {
            
             <div className="card-body flex flex-1 items-center">
                 <h2 className="card-title">{name}</h2>
+                
         
             </div>
         </div>
