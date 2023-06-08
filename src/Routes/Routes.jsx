@@ -9,6 +9,7 @@ import InstructorPage from "../pages/InstructorPage/InstructorPage";
 import ErrorPage from "../pages/Home/ErrorPage/ErrorPage";
 import Login from "../pages/Login/Login";
 import SignUp from "../SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 
   export const router = createBrowserRouter([
@@ -23,11 +24,11 @@ import SignUp from "../SignUp/SignUp";
         },
         {
           path:'classes',
-          element:<ClassesPage></ClassesPage>
+          element:<PrivateRoute><ClassesPage></ClassesPage></PrivateRoute>
         },
         {
           path:'instructor',
-          element:<InstructorPage></InstructorPage>
+          element:<PrivateRoute><InstructorPage></InstructorPage></PrivateRoute>
         },
         {
           path:'login',

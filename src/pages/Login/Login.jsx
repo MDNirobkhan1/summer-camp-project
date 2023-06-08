@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../../assets/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg'
 import SocalLogin from "./SocalLogin";
 import { useContext } from "react";
@@ -13,6 +13,10 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const { signIn } = useContext(AuthContext)
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from.pathname || "/";
 
     const onSubmit = data => {
         console.log(data);
@@ -29,6 +33,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 })
+                navigate(from,{replace: true});
             })
             .catch(error => console.log(error))
     };
