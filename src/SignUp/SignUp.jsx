@@ -2,19 +2,45 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import logo from '../assets/signUp.jpg'
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register,reset, handleSubmit, formState: { errors } } = useForm();
+
+    const { createUser } = useContext(AuthContext);
 
     const onSubmit = data => {
+        console.log(data);
+        createUser(data.email, data.password, data.name, data.photoURL)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                reset();
+                Swal.fire({
+                    title: 'User Created  successfull.',
+                    width: 600,
+                    padding: '3em',
+                    color: '#716add',
+                    background: '#fff url(/images/trees.png)',
+                    backdrop: `
+                            rgba(0,0,123,0.4)
+                            url("/images/nyan-cat.gif")
+                            left top
+                            no-repeat
+                            `
+                })
 
+            })
+            .catch(error => console.log(error))
     };
     return (
         <div className="hero min-h-screen bg-base-200">
 
             <div className="hero-content flex-col lg:flex-row">
-            <div className="mr-20 w-1/2">
+                <div className="mr-20 w-1/2">
                     <img className="h-[700px]" src={logo} alt="" />
                 </div>
 
@@ -66,7 +92,7 @@ const SignUp = () => {
 
                     </div>
                 </div>
-                
+
             </div>
         </div>
     );
