@@ -12,7 +12,7 @@ const ClassesPageItem = ({item}) => {
                 <p>Email: {email}</p>
                 <p >Instructor Name : {InstructorName}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-outline  border-0 border-b-4 bg-slate-200 border-orange-600">Select  Card</button>
+                    <button className="btn btn-outline  border-0 border-b-4 bg-slate-200 ">Select  Card</button>
                 </div>
             </div>
         </div>
