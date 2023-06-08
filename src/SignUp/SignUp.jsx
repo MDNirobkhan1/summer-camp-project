@@ -27,7 +27,7 @@ const SignUp = () => {
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input type="text" {...register("name", { required: true })} placeholder="email" name='name' className="input input-bordered" />
-                                {errors.name && <span className="text-red-600">Name is required</span>}
+                                {errors.name && <span className="text-red-500">Name is required</span>}
                             </div>
 
                             <div className="form-control">
@@ -35,28 +35,28 @@ const SignUp = () => {
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="text" {...register("email", { required: true })} placeholder="email" name='email' className="input input-bordered" />
-                                {errors.email && <span className="text-red-600">Email is required</span>}
+                                {errors.email && <span className="text-red-500">Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" {...register("password", { required: true, minLength: 6, maxLength: 20 })} placeholder="password" name='password' className="input input-bordered" />
-                                {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
+                                {errors.password?.type === 'minLength' && <span className="text-red-400">Password must be 6 characters</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
                                 <input type="password" {...register("password", { required: true, minLength: 6, maxLength: 20 })} placeholder="password" name='password' className="input input-bordered" />
-                                {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
+                                {errors.password?.type === 'minLength' && <span className="text-red-500">Password must be 6 characters</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
                                 <input type="text" {...register("photoURL", { required: true })} placeholder="photoURL" className="input input-bordered" />
-                                {errors.photoUrL && <span className="text-red-600">Photo URL is required</span>}
+                                {errors.photoUrL && <span className="text-red-500">Photo URL is required</span>}
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-success bg-green-600" type="submit" value="sign up" />
