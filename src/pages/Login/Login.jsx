@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import logo from '../../assets/360_F_339709048_ZITR4wrVsOXCKdjHncdtabSNWpIhiaR7.jpg'
+import SocalLogin from "./SocalLogin";
 
 
 
@@ -15,7 +16,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
 
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  bg-emerald-200">
                     <div className="card-body">
                         <h1 className="text-3xl font-bold text-center">Login</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -34,10 +35,13 @@ const Login = () => {
                                 {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="login" />
+                                <input className="btn btn-success bg-blue-500" type="submit" value="login" />
                             </div>
                         </form>
                         <p className='text-center'>New here Create account? <Link to='/signup'><span className='text-orange-600 font-bold'>Sign Up</span></Link></p>
+                    <div>
+                        <SocalLogin></SocalLogin>
+                    </div>
                     </div>
                 </div>
                 <div className="mr-20 w-1/2">
