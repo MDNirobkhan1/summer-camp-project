@@ -65,6 +65,7 @@ const ClassesPageItem = ({ item }) => {
                 <p>Seats: {seats}</p>
                 <p>Email: {email}</p>
                 <p >Instructor Name : {InstructorName}</p>
+                <p >Price : {price}</p>
                 <div className="card-actions justify-end">
                     <button onClick={() => handleAddToClass(item)} className="btn btn-outline  border-0 border-b-4 bg-slate-200 ">Select  Class</button>
                 </div>

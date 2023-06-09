@@ -28,7 +28,9 @@ const Navbar = () => {
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/instructor'>Instructors</NavLink></li>
                 <li><NavLink to='/classes'>Classes</NavLink></li>
-                <li><NavLink to='/dashboard'>Deashboard</NavLink></li>
+                <li><NavLink to='/dashboard'>
+                    Deashboard</NavLink></li>
+                    <span>add </span>
             </> : <>
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/instructor'>Instructors</NavLink></li>
