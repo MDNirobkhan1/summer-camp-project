@@ -25,7 +25,7 @@ const Banner = () => {
 
                     </div>
                     <div>
-                        <img className="h-[600px] w-full" src={logo1} alt="" />
+                        <img className="h-[600px] w-full" src={logo3} alt="" />
                     </div>
 
                 </div>
@@ -63,7 +63,7 @@ const Banner = () => {
 
                     </div>
                     <div>
-                        <img className="h-[600px] w-full" src={logo3} alt="" />
+                        <img className="h-[600px] w-full" src={logo1} alt="" />
                     </div>
 
                 </div>

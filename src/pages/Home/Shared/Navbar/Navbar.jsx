@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../../../assets/55102_1477681363.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
@@ -24,14 +24,15 @@ const Navbar = () => {
     const navOptions = <>
         {
             user ? <>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/instructor'>Instructors</Link></li>
-                <li><Link to='/classes'>Classes</Link></li>
-                <li><Link to='/dashboard'>Deashboard</Link></li>
+                 
+                <li><NavLink to='/'>Home</NavLink></li>
+                <li><NavLink to='/instructor'>Instructors</NavLink></li>
+                <li><NavLink to='/classes'>Classes</NavLink></li>
+                <li><NavLink to='/dashboard'>Deashboard</NavLink></li>
             </> : <>
-                <li><Link to='/'>Home</Link></li>
-                <li><Link to='/instructor'>Instructors</Link></li>
-                <li><Link to='/classes'>Classes</Link></li>
+                <li><NavLink to='/'>Home</NavLink></li>
+                <li><NavLink to='/instructor'>Instructors</NavLink></li>
+                <li><NavLink to='/classes'>Classes</NavLink></li>
             </>
         }
 
