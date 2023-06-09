@@ -32,7 +32,7 @@ const Navbar = () => {
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/instructor'>Instructors</NavLink></li>
                 <li><NavLink to='/classes'>Classes</NavLink></li>
-                <li><NavLink to='/dashboard/selectcLass'>
+                <li><NavLink to='/dashboard/selectclass'>
                     Deashboard
                     <span className="badge inl bg-fuchsia-800 text-white">+{cart?.length || 0}</span>
                     </NavLink></li>
