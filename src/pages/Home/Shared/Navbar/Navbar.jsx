@@ -3,10 +3,14 @@ import logo from '../../../../assets/55102_1477681363.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useClass from "../../../../hooks/useSelectClass";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [cart] = useClass();
+    console.log(cart);
+
     const handleLogOut = () => {
         logOut()
             .then(() => {
@@ -24,13 +28,15 @@ const Navbar = () => {
     const navOptions = <>
         {
             user ? <>
-                 
+
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/instructor'>Instructors</NavLink></li>
                 <li><NavLink to='/classes'>Classes</NavLink></li>
                 <li><NavLink to='/dashboard'>
-                    Deashboard</NavLink></li>
-                    <span>add </span>
+                    Deashboard
+                    <span className="badge inl bg-fuchsia-800 text-white">+{cart?.length || 0}</span>
+                    </NavLink></li>
+
             </> : <>
                 <li><NavLink to='/'>Home</NavLink></li>
                 <li><NavLink to='/instructor'>Instructors</NavLink></li>
