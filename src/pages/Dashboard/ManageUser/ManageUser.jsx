@@ -28,10 +28,31 @@ const ManageUser = () => {
               })
         }
       })
+    };
+     
+    const handleInstructor =user=>{
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        method:'PATCH'
+      })
+      .then(res => res.json())
+      .then(data=> {
+        if(data.modifiedCount){
+            refetch();
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `${user.name} is Instructor new!`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+      })
     }
+
+
     return (
         <div>
-            <h2>Manage User: {user.length}</h2>
+            <h2 className="text-center font-semibold text-2xl mb-4">Manage User: {user.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     {/* head */}
@@ -40,6 +61,7 @@ const ManageUser = () => {
                             <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
+                            <th>Email</th>
                             <th>Admin</th>
                             <th>Instructor</th>
                         </tr>
@@ -50,11 +72,12 @@ const ManageUser = () => {
                                 <th>{index + 1}</th>
                                 <td><img className="w-10 rounded-xl" src={user.photoURL} alt="" /></td>
                                 <td>{user.name}</td>
+                                <td>{user.email}</td>
                                 <td>{user.role === 'admin' ? 'admin' :
                                     <button onClick={() => handleAdmin(user)} className="btn btn-active bg-green-600"><FaUserShield></FaUserShield></button>
                                 }</td>
-                                <td>{user.ins === 'instructor' ? 'instructor' :
-                                    <button className="btn btn-active btn-success"><FaUserGraduate></FaUserGraduate></button>
+                                <td>{user.inst === 'instructor' ? 'instructor' :
+                                    <button onClick={()=> handleInstructor(user)} className="btn btn-active btn-success"><FaUserGraduate></FaUserGraduate></button>
 
                                 }</td>
                             </tr>)
