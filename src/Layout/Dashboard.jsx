@@ -7,6 +7,8 @@ import{ GrSelect, GrUserAdmin} from 'react-icons/gr'
 
 const Dashboard = () => {
     const [cart]=useClass();
+
+    const isAdmin= true;
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -15,9 +17,19 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
+            
             <div className="drawer-side bg-[#da8ef8]">
+                
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-3 gap-3 w-70">
+
+                    {
+                        isAdmin? <>
+                        
+                        </> :<>
+                        
+                        </>
+                    }
                     <li><a className="bg-blue-200"> <FaHome></FaHome> Student DashBoard</a></li>
                     <li>
                         <NavLink to="/dashboard/selectcLass"><GrSelect></GrSelect> My Selected Classes

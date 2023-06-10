@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
+
 
 
 const CheckOut = () => {
@@ -7,6 +9,9 @@ const CheckOut = () => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+
+
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -32,6 +37,8 @@ const CheckOut = () => {
             console.log('payment method', paymentMethod);
             setCardError('')
         }
+
+
     }
     return (
         <>

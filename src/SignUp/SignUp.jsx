@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../assets/signUp.jpg'
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 
 
 const SignUp = () => {
-    const { register,reset, handleSubmit, formState: { errors } } = useForm();
-
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    const navigate= useNavigate()
     const { createUser } = useContext(AuthContext);
 
     const onSubmit = data => {
@@ -19,19 +19,34 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 reset();
-                Swal.fire({
-                    title: 'User Created  successfull.',
-                    width: 600,
-                    padding: '3em',
-                    color: '#716add',
-                    background: '#fff url(/images/trees.png)',
-                    backdrop: `
-                            rgba(0,0,123,0.4)
-                            url("/images/nyan-cat.gif")
-                            left top
-                            no-repeat
-                            `
+                const saveUser = { name: data.name, email: data.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
                 })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            reset();
+                            Swal.fire({
+                                title: 'User Created  successfull.',
+                                width: 600,
+                                padding: '3em',
+                                color: '#716add',
+                                background: '#fff url(/images/trees.png)',
+                                backdrop: `
+                                                    rgba(0,0,123,0.4)
+                                                    url("/images/nyan-cat.gif")
+                                                    left top
+                                                    no-repeat
+                                                    `
+                            })
+                            
+                        }
+                    })
 
             })
             .catch(error => console.log(error))
