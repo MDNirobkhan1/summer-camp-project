@@ -2,6 +2,7 @@
 import { FaTrashAlt } from "react-icons/fa";
 import useClass from "../../../hooks/useSelectClass";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectClass = () => {
     const [cart, refetch] = useClass();
@@ -59,7 +60,7 @@ const SelectClass = () => {
                                 <td>{user.name}</td>
                                 <td>{user.price}</td>
                                 <td>{user.seats}</td>
-                                <td><button className="btn btn-xl bg-green-300">Pay</button></td>
+                                <Link to='/dashboard/payment'><td><button className="btn btn-xl bg-green-300">Pay</button></td></Link>
                                 <td><button onClick={() => { handleDelete(user) }} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt> </button></td>
                             </tr>)
                         }
