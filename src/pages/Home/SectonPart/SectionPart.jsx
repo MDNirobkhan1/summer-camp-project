@@ -1,4 +1,5 @@
 import logo from '../../../assets/slid.jpg'
+// import { animated } from '@react-spring/web'
 
 const SectionPart = () => {
     return (

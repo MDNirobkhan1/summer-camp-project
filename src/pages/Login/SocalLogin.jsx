@@ -17,7 +17,7 @@ const SocalLogin = () => {
                 console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, photoURL:loggedInUser.photoURL }
                 console.log(saveUser);
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-server-tawny.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': "application/json"

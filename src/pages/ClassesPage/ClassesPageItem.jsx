@@ -22,7 +22,7 @@ const ClassesPageItem = ({ item }) => {
         console.log(item);
         if (user && user.email) {
             const selectItem={selectId: _id, name, image, price, seats, email: user.email}
-            fetch('http://localhost:5000/carts',{
+            fetch('https://summer-camp-server-tawny.vercel.app/carts',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json'
