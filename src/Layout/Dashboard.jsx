@@ -1,14 +1,17 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import {  FaHome, FaWallet, FaCalendarAlt, FaUtensils, FaBook, FaUsers, FaAccusoft } from 'react-icons/fa'
+import { FaHome, FaWallet, FaCalendarAlt, FaUtensils, FaBook, FaUsers, FaAccusoft } from 'react-icons/fa'
 import useClass from "../hooks/useSelectClass";
-import{ GrSelect, GrUserAdmin} from 'react-icons/gr'
+import { GrSelect, GrUserAdmin } from 'react-icons/gr'
+import useAdmin from "../hooks/useAdmin";
 
 
 
 const Dashboard = () => {
-    const [cart]=useClass();
+    const [cart] = useClass();
 
-    const isAdmin= true;
+    // const isAdmin= true;
+    const [isAdmin] = useAdmin();
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -17,35 +20,41 @@ const Dashboard = () => {
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
-            
+
             <div className="drawer-side bg-[#da8ef8]">
-                
+
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-3 gap-3 w-70">
-                <Link className="text-center btn btn-outline" to='/'><a><li><FaHome></FaHome> Home</li></a></Link>
+                    <Link className="text-center btn btn-outline" to='/'><a><li><FaHome></FaHome> Home</li></a></Link>
                     {
-                        isAdmin? <>
-                        
-                        </> :<>
-                        
+                        isAdmin ? <>
+                            <li><a className="bg-blue-200"> <FaHome></FaHome> Student DashBoard</a></li>
+                            <li>
+                                <NavLink to="/dashboard/selectcLass"><GrSelect></GrSelect> My Selected Classes
+                                    <span className="badge inl bg-fuchsia-800 text-white">+{cart?.length || 0}</span>
+                                </NavLink>
+                            </li>
+                            <li><NavLink to="/dashboard/enrollclass"><FaCalendarAlt></FaCalendarAlt> My Enrolled Classes</NavLink></li>
+                            <hr />
+                            <li><a className="bg-blue-200"><FaAccusoft></FaAccusoft> Instructor Dashboard</a></li>
+                            <li><NavLink to="/dashboard/addclass"><FaBook></FaBook> Add a Class</NavLink></li>
+                            <li><NavLink to="/dashboard/myclass"><FaWallet></FaWallet> My Classes</NavLink></li>
+                            <hr />
+                            <li><a className="bg-blue-200"><GrUserAdmin></GrUserAdmin> Admin Dashboard</a></li>
+                            <li><NavLink to="/dashboard/manageclass"><FaUtensils></FaUtensils> Manage Class</NavLink></li>
+                            <li><NavLink to="/dashboard/manageuser"><FaUsers></FaUsers> Manage User</NavLink></li>
+                        </> : <>
+                            <li><a className="bg-blue-200"> <FaHome></FaHome> Student DashBoard</a></li>
+                            <li>
+                                <NavLink to="/dashboard/selectcLass"><GrSelect></GrSelect> My Selected Classes
+                                    <span className="badge inl bg-fuchsia-800 text-white">+{cart?.length || 0}</span>
+                                </NavLink>
+                            </li>
+                            <li><NavLink to="/dashboard/enrollclass"><FaCalendarAlt></FaCalendarAlt> My Enrolled Classes</NavLink></li>
                         </>
                     }
 
-                    <li><a className="bg-blue-200"> <FaHome></FaHome> Student DashBoard</a></li>
-                    <li>
-                        <NavLink to="/dashboard/selectcLass"><GrSelect></GrSelect> My Selected Classes
-                        <span className="badge inl bg-fuchsia-800 text-white">+{cart?.length || 0}</span>
-                        </NavLink>
-                    </li>
-                    <li><NavLink to="/dashboard/enrollclass"><FaCalendarAlt></FaCalendarAlt> My Enrolled Classes</NavLink></li>
-                    <hr />
-                    <li><a className="bg-blue-200"><FaAccusoft></FaAccusoft> Instructor Dashboard</a></li>
-                    <li><NavLink to="/dashboard/addclass"><FaBook></FaBook> Add a Class</NavLink></li>
-                    <li><NavLink to="/dashboard/myclass"><FaWallet></FaWallet> My Classes</NavLink></li>
-                    <hr />
-                    <li><a className="bg-blue-200"><GrUserAdmin></GrUserAdmin> Admin Dashboard</a></li>
-                    <li><NavLink to="/dashboard/manageclass"><FaUtensils></FaUtensils> Manage Class</NavLink></li>
-                    <li><NavLink to="/dashboard/manageuser"><FaUsers></FaUsers> Manage User</NavLink></li>
+
                 </ul>
 
             </div>
