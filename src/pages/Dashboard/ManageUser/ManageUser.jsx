@@ -2,51 +2,53 @@
 import { useQuery } from "@tanstack/react-query";
 import { FaUserGraduate, FaUserShield } from 'react-icons/fa'
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const ManageUser = () => {
+    const [axiosSecure] = useAxiosSecure();
 
     const { data: user = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
-        return res.json();
+        const res = await axiosSecure.get('/users')
+        return res.data;
     });
 
     const handleAdmin = user => {
-      fetch(`http://localhost:5000/users/admin/${user._id}`, {
-        method:'PATCH'
-      })
-      .then(res => res.json())
-      .then(data=> {
-        if(data.modifiedCount){
-            refetch();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `${user.name} is Admin new!`,
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
-      })
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is Admin new!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     };
-     
-    const handleInstructor =user=>{
+
+    const handleInstructor = user => {
         fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-        method:'PATCH'
-      })
-      .then(res => res.json())
-      .then(data=> {
-        if(data.modifiedCount){
-            refetch();
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: `${user.name} is Instructor new!`,
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
-      })
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is Instructor new!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
 
@@ -77,7 +79,7 @@ const ManageUser = () => {
                                     <button onClick={() => handleAdmin(user)} className="btn btn-active bg-green-600"><FaUserShield></FaUserShield></button>
                                 }</td>
                                 <td>{user.inst === 'instructor' ? 'instructor' :
-                                    <button onClick={()=> handleInstructor(user)} className="btn btn-active btn-success"><FaUserGraduate></FaUserGraduate></button>
+                                    <button onClick={() => handleInstructor(user)} className="btn btn-active btn-success"><FaUserGraduate></FaUserGraduate></button>
 
                                 }</td>
                             </tr>)

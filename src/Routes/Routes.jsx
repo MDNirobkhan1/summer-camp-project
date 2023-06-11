@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
         element: <SelectClass></SelectClass>
       },
       {
-        path: '/dashboard/enrollclass/:class',
+        path: 'enrollclass',
         element: <EnrollClass></EnrollClass>
       },
       {

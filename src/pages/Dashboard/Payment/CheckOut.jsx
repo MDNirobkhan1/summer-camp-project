@@ -1,21 +1,34 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
-// import { useNavigate } from 'react-router-dom';
 
 
-const CheckOut = () => {
+
+
+const CheckOut = ({ price }) => {
 
 
     // const navigate = useNavigate();
 
+
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
+    
 
+    const [axiosSecure] = useAxiosSecure();
 
+    useEffect(() => {
+        axiosSecure.post('/create-payment-intent', { price })
+            .then(res => {
+                console.log(res.data.clientSecret);
+                
+            })
+    }, [])
 
 
     const handleSubmit = async (event) => {
@@ -42,12 +55,11 @@ const CheckOut = () => {
             console.log('payment method card', paymentMethod);
             setCardError('')
 
-            // if (paymentMethod) {
-            //     const paymentData = JSON.stringify(paymentMethod);
-            //     navigate(`/dashboard/enrollclass/${encodeURIComponent(paymentData)}`);
-            //   }
-
         }
+
+        
+
+        
 
 
     }
@@ -71,7 +83,8 @@ const CheckOut = () => {
                         },
                     }}
                 />
-                <button className="btn btn-active bg-teal-300 mt-2 " type="submit" disabled={!stripe}>
+                <button className="btn btn-active bg-teal-300 mt-2 " type="submit"
+                    disabled={!stripe}>
                     Payment
                 </button>
             </form>
