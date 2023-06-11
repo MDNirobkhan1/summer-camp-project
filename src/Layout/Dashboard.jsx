@@ -22,7 +22,7 @@ const Dashboard = () => {
                 
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-3 gap-3 w-70">
-                <Link className="text-center btn btn-outline " to='/'><a><li><FaHome></FaHome> Home</li></a></Link>
+                <Link className="text-center btn btn-outline" to='/'><a><li><FaHome></FaHome> Home</li></a></Link>
                     {
                         isAdmin? <>
                         
@@ -31,7 +31,6 @@ const Dashboard = () => {
                         </>
                     }
 
-                    
                     <li><a className="bg-blue-200"> <FaHome></FaHome> Student DashBoard</a></li>
                     <li>
                         <NavLink to="/dashboard/selectcLass"><GrSelect></GrSelect> My Selected Classes

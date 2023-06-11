@@ -3,8 +3,13 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useState } from "react";
 
 
+// import { useNavigate } from 'react-router-dom';
+
 
 const CheckOut = () => {
+
+
+    // const navigate = useNavigate();
 
     const stripe = useStripe();
     const elements = useElements();
@@ -34,8 +39,14 @@ const CheckOut = () => {
 
         }
         else {
-            console.log('payment method', paymentMethod);
+            console.log('payment method card', paymentMethod);
             setCardError('')
+
+            // if (paymentMethod) {
+            //     const paymentData = JSON.stringify(paymentMethod);
+            //     navigate(`/dashboard/enrollclass/${encodeURIComponent(paymentData)}`);
+            //   }
+
         }
 
 
